@@ -1,4 +1,9 @@
+from datetime import datetime
+
+import requests
 from django.db import models
+
+GOOGLE_TRANSLATE_API_KEY = 'ya29.El-8Aysqs5nB64_EUKeoJNSF34NMmIZ8bxYPaHuhxNIb8P6kYEgUhBLmhAjmzAOwf0-iKsbWeCjVIncACsbpntgiz4-a3zBieo1QHwkndot4W-Cj5uTtKtEY0LeZnTHc-w'
 
 
 # Create your models here.
@@ -8,9 +13,24 @@ class Translation(models.Model):
     eng_translation = models.CharField(max_length=500)
 
     def __str__(self):
-        return [self.original_lang_text, self.eng_translation]
+        return str([self.original_lang_text, self.eng_translation])
 
     def dict_to_class(self, req_body):
-        self.pub_date = req_body['pub_date']
+        self.pub_date = datetime.now()
         self.original_lang_text = req_body['original_lang_text']
-        self.eng_translation = req_body['eng_translation']
+        self.eng_translation = self.get_english_translation()
+
+    # Sample Google Translate API Params
+    # {
+    #   'q': 'Dónde Está La Playa',
+    #   'target': 'en',
+    #   'format': 'text'
+    # }
+    def get_english_translation(self):
+        payload = {'q': self.original_lang_text, 'target': 'en', 'format': 'text'}
+        headers = {
+            'Authorization': 'Bearer ya29.El-8A93J2sJU0UcY44EHo42CzAQf7T0r52lXWL0uvf1VHGURp1F_rpEdMz3zDlezzsjFUtsUUACd7qvGAJ96R5BGvpS0Ck_M52fGOZ2O_TMHeeKlLmFZwdHSofWtICkJMw'}
+        print(headers)
+        r = requests.get('https://translation.googleapis.com/language/translate/v2', params=payload, headers=headers)
+        print(r.json())
+        return r.json()['data']['translations'][0]['translatedText']

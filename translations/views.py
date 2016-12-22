@@ -20,11 +20,10 @@ def index(request):
         body_unicode = request.body.decode('utf-8')
         body = json.loads(r'%s' % body_unicode)
         ###
-        print(body)
         # create new event, convert request body dict into model properties,
         # and then save in db
         translation = Translation()
         translation.dict_to_class(body)
         translation.save()
-        created_translation = Translation.objects.filter(id=Translation.objects.all().count() - 1)
+        created_translation = Translation.objects.filter(id=translation.id)
         return HttpResponse(serializers.serialize("json", created_translation))
