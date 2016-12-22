@@ -1,0 +1,7 @@
+<div>
+    <div ng-repeat="translation in data.translations | filter:search | orderBy:'created_at'">
+        <p>{{ translation.model.fields.original_lang_text }}</p>
+        <p>Language</p>
+        <p>{{ translation.model.fields.eng_translation}}</p>
+    </div>
+</div>

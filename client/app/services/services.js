@@ -1,4 +1,4 @@
-angular.module('translations.services', [])
+angular.module('translator.services', [])
     .factory('Translations', function($http) {
         var getAll = function() {
             return $http({
