@@ -1,0 +1,22 @@
+{
+  "name": "translator_app",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Deniz Tetik <deniztetik31@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/deniztetik/translator_app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.1",
+    "angular-route": "^1.6.1"
+  }
+}

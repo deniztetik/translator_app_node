@@ -1,0 +1,23 @@
+{
+  "name": "translator_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deniztetik/translator_app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deniztetik/translator_app/issues"
+  },
+  "homepage": "https://github.com/deniztetik/translator_app#readme",
+  "dependencies": {
+    "bower": "^1.8.0"
+  }
+}
