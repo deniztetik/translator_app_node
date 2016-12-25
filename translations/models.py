@@ -11,14 +11,17 @@ class Translation(models.Model):
     pub_date = models.DateTimeField('date created')
     original_lang_text = models.CharField(max_length=500)
     eng_translation = models.CharField(max_length=500)
+    original_lang = models.CharField(max_length=500, default='es')
 
     def __str__(self):
-        return str([self.original_lang_text, self.eng_translation])
+        return str([self.original_lang_text, self.original_lang, self.eng_translation])
 
     def dict_to_class(self, req_body):
         self.pub_date = datetime.now()
+        # self.original_lang = req_body['original_lang']
         self.original_lang_text = req_body['original_lang_text']
-        self.eng_translation = self.get_english_translation()
+        self.get_english_translation_and_source_language()
+        print(self.original_lang)
 
     # Sample Google Translate API Params
     # {
@@ -26,11 +29,12 @@ class Translation(models.Model):
     #   'target': 'en',
     #   'format': 'text'
     # }
-    def get_english_translation(self):
+    def get_english_translation_and_source_language(self):
         payload = {'q': self.original_lang_text, 'target': 'en', 'format': 'text'}
         headers = {
-            'Authorization': 'Bearer ya29.El-8A3nVySvpSt_ogfvAWdHXBPzwEcQrJgNJSumQAxh3BCu2AdgHdjHpecDf3XdaBDz2_IC-kEiGqXOcttV3xiFKeX81Qyc8z2iWCaqqm40Vqr45qZndIfKaEG-t6gVC-w'}
+            'Authorization': 'Bearer ya29.El-_A56Zzw69zAwmYuWZc8A1fxp11bgkPpvJD4hB5l2f2OrqBywQyspdMDKGgLnihmjCabmeV8i4RR_DA241LIdBCU4i3WmH_ki9JQxJuuArhSy3OVnWEpC-1usw-5kXtw'}
         print(headers)
         r = requests.get('https://translation.googleapis.com/language/translate/v2', params=payload, headers=headers)
         print(r.json())
-        return r.json()['data']['translations'][0]['translatedText']
+        self.original_lang = r.json()['data']['translations'][0]['detectedSourceLanguage']
+        self.eng_translation = r.json()['data']['translations'][0]['translatedText']

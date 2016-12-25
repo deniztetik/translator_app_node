@@ -28,4 +28,5 @@ def index(request):
         translation.save()
         #TODO: create dict response so request doesn't have to filter through query set just to get the same item
         created_translation = Translation.objects.filter(id=translation.id)
+        print(created_translation)
         return HttpResponse(serializers.serialize("json", created_translation))
