@@ -29,7 +29,7 @@ class Translation(models.Model):
     def get_english_translation(self):
         payload = {'q': self.original_lang_text, 'target': 'en', 'format': 'text'}
         headers = {
-            'Authorization': 'Bearer ya29.El-8A93J2sJU0UcY44EHo42CzAQf7T0r52lXWL0uvf1VHGURp1F_rpEdMz3zDlezzsjFUtsUUACd7qvGAJ96R5BGvpS0Ck_M52fGOZ2O_TMHeeKlLmFZwdHSofWtICkJMw'}
+            'Authorization': 'Bearer ya29.El-8A3nVySvpSt_ogfvAWdHXBPzwEcQrJgNJSumQAxh3BCu2AdgHdjHpecDf3XdaBDz2_IC-kEiGqXOcttV3xiFKeX81Qyc8z2iWCaqqm40Vqr45qZndIfKaEG-t6gVC-w'}
         print(headers)
         r = requests.get('https://translation.googleapis.com/language/translate/v2', params=payload, headers=headers)
         print(r.json())

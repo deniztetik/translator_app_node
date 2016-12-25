@@ -22,8 +22,10 @@ def index(request):
         ###
         # create new event, convert request body dict into model properties,
         # and then save in db
+        ###
         translation = Translation()
         translation.dict_to_class(body)
         translation.save()
+        #TODO: create dict response so request doesn't have to filter through query set just to get the same item
         created_translation = Translation.objects.filter(id=translation.id)
         return HttpResponse(serializers.serialize("json", created_translation))

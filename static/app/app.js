@@ -6,12 +6,8 @@ angular.module('translator', [
 ])
     .config(function($routeProvider) {
         $routeProvider
-            // .when('/new_translation', {
-            //     templateUrl: 'app/new_translation/new_translation.html',
-            //     controller: 'NewTranslation'
-            // })
             .when('/translations_list', {
-                templateUrl: 'app/translations_list/translations_list.html',
+                templateUrl: '/static/app/translations_list/translations_list.html',
                 controller: 'TranslationsListController'
             })
             .otherwise({
