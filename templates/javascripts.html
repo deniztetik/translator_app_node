@@ -1,0 +1,13 @@
+{% load compress %}
+{% load staticfiles %}
+
+{% compress js %}
+  <script type="text/javascript" src="{% static 'lib/angular/angular.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'lib/angular-route/angular-route.min.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'app/app.js' %}"></script>
+
+  <script type="text/javascript" src="{% static 'app/services/services.js' %}"></script>
+  <script type="text/javascript" src="{% static 'app/translations_list/translations_list.js' %}"></script>
+  <script type="text/javascript" src="{% static 'app/app.js' %}"></script>
+{% endcompress %}
