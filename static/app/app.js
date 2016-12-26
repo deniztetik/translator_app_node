@@ -2,6 +2,7 @@ angular.module('translator', [
   'translator.services',
   'translator.new_translation',
   'translator.translations_list',
+  'translator.navbar',
   'ngRoute'
 ])
   .config(function($routeProvider) {
