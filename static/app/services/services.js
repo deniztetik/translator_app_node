@@ -12,7 +12,7 @@ angular.module('translator.services', [])
         var addTranslation = function(text) {
             return $http({
                 method: 'POST',
-                url: '/api/translations',
+                url: '/api/translations/',
                 data: {original_lang_text: text}
             });
         };

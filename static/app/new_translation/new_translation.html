@@ -1,0 +1,11 @@
+<h1>New Translation</h1>
+<form role="form" ng-submit="addTranslation()">
+  <div ng-show="error" ng-bind="error"></div>
+  <label for="new_translation">Phrase To Be Translated</label>
+  <input type="text" ng-model="phrase" placeholder="Donde est la plaja" />
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<div ng-if="translation">
+  <p>Translation: {{ translation }}</p>
+  <p>Detected Source Language: {{ detectedSourceLang }}</p>
+</div>
