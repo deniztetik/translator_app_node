@@ -1,9 +1,7 @@
 from datetime import datetime
 from django.db import models
 from googleapiclient.discovery import build
-
-
-GOOGLE_TRANSLATE_API_KEY = 'AIzaSyB-_g68dfuwXjP0Tcz4Xaav8bIP9fMa7Y0'
+from .config import GOOGLE_TRANSLATE_API_KEY
 
 
 service = build('translate', 'v2',
@@ -21,7 +19,6 @@ class Translation(models.Model):
 
     def dict_to_class(self, req_body):
         self.pub_date = datetime.now()
-        # self.original_lang = req_body['original_lang']
         self.original_lang_text = req_body['original_lang_text']
         self.get_english_translation_and_source_language()
         print(self.original_lang)
