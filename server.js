@@ -5,7 +5,8 @@ const express    = require('express')
     , google     = require('googleapis')
     , translate  = google.translate('v2')
     , translationController = require('./controllers/translationController')
-    , GOOGLE_API_KEY = require('./config/config.js');
+    , GOOGLE_API_KEY = require('./config/config')
+    , isoLangs = require('./config/iso_lang_codes');
 
 // to make parsing requests easier ///
 app.use(bodyParser.json());
@@ -27,7 +28,7 @@ app.post('/api/translations', function(req, res) {
     var original_lang = parsedBody.data.translations[0].detectedSourceLanguage;
     var eng_translation = parsedBody.data.translations[0].translatedText;
     var translation = {
-      original_lang: original_lang,
+      original_lang: isoLangs[original_lang].name,
       eng_translation: eng_translation,
       original_lang_text: req.body.original_lang_text
     };
