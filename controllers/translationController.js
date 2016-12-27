@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 const Translation = require('../models/translation.js');
 
 
@@ -13,7 +13,7 @@ exports.addTranslation = function(translation) {
 
 /**
  This function will take an email for input and return a
- 'User' Bookshelf model
+ 'Translation' Bookshelf model
  */
 exports.getTranslations = function() {
   return Translation.fetchAll();

@@ -1,8 +1,7 @@
-"use strict"
+"use strict";
 /**
- *   Creates our schema for storing our app's data. We create two tables,
- *   one to store csv file names and one to store the expense data.
- */
+ *   Creates schema for storing app data
+ **/
 
 const knex = require('knex')({
   client: 'mysql',
@@ -28,11 +27,6 @@ knex.schema.hasTable('translations').then(function(exists) {
     });
   }
 });
-
-// pub_date = models.DateTimeField('date created')
-// original_lang_text = models.CharField(max_length=500)
-// eng_translation = models.CharField(max_length=500)
-// original_lang = models.CharField(max_length=500, default='es')
 
 const Bookshelf = require('bookshelf')(knex);
 
