@@ -21,7 +21,7 @@ app.post('/api/translations', function(req, res) {
     qs: { target: 'en', q: req.body.original_lang_text},
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ya29.El_AA4JzANBvzPp7xWI4lpLCAS4yCiz6worNhYkib_WaME0pnH-ROFCIxgZIgCp3yGzCm_WvMA8TFC2R_GN6hMGJHepwYgmBK98ADA7F6OnXP18MJ4lrQnzcrpfH7ve_-Q'
+      Authorization: 'Bearer ya29.El_BA8xYEn8GWqqq6HoX498kG1W-KCM7e12AHzM42hFwynbk6SG964iHWfvAI9Qk0Comowq1osDE9R-ojLHTYlOeHTYS2Uk6k5qqOPfEjQpvCEp-AAjYECmgKXgBY27eVg'
     }
   };
   request(options, function(error, response, body) {
@@ -48,7 +48,11 @@ app.post('/api/translations', function(req, res) {
 // });
 
 app.get('/api/translations', function(req, res) {
-  console.log('GET');
+  translationController.getTranslations()
+    .then(function(translations) {
+      res.send(translations.map(translation => translation.attributes));
+      // console.log(translations);
+    });
 });
 
 // redirect gets to root if address not found //

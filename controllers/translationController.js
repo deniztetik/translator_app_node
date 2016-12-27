@@ -16,10 +16,5 @@ exports.addTranslation = function(translation) {
  'User' Bookshelf model
  */
 exports.getTranslations = function() {
-  return new Promise(function(resolve,reject) {
-    //translations.getAll
-    new User({email: userEmail}).fetch().then(function (user) {
-      resolve(user)
-    });
-  });
+  return Translation.fetchAll();
 };
