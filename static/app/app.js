@@ -16,6 +16,6 @@ angular.module('translator', [
         controller: 'NewTranslationController'
       })
       .otherwise({
-        redirectTo: '/new_translation'
+        redirectTo: '/translations_list'
       });
   });
