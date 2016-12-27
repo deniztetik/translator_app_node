@@ -21,7 +21,7 @@ app.post('/api/translations', function(req, res) {
     qs: { target: 'en', q: req.body.original_lang_text},
     headers: {
       'Content-Type': 'application/json',
-      Authorization: 'Bearer ya29.El_BA8xYEn8GWqqq6HoX498kG1W-KCM7e12AHzM42hFwynbk6SG964iHWfvAI9Qk0Comowq1osDE9R-ojLHTYlOeHTYS2Uk6k5qqOPfEjQpvCEp-AAjYECmgKXgBY27eVg'
+      Authorization: 'Bearer ya29.El_BA2n5r1voh-9HaQbYHdrYcLjMN99LdRrj2u_k9l7JrUkXHVU_xrxY8IdAGgplKCDdSfeqmBb9_Cj9SS_uoiiC_l7kfFY-N-fpTtO9vt64707MU-r4Fe67i8oQeo7gEg'
     }
   };
   request(options, function(error, response, body) {
