@@ -2,7 +2,9 @@ const express    = require('express')
     , app        = express()
     , port       = process.env.PORT || 8080
     , bodyParser = require('body-parser')
-    , request    = require('request');
+    , request    = require('request')
+    , translationController = require('./controllers/translationController');
+
 
 // to make parsing requests easier ///
 app.use(bodyParser.json());
@@ -14,7 +16,6 @@ app.use(express.static(__dirname + '/static'));
 
 
 app.post('/api/translations', function(req, res) {
-  console.log('reqbody', req.body);
   var options = {
     url: 'https://translation.googleapis.com/language/translate/v2',
     qs: { target: 'en', q: req.body.original_lang_text},
@@ -25,14 +26,16 @@ app.post('/api/translations', function(req, res) {
   };
   request(options, function(error, response, body) {
     var parsedBody = JSON.parse(body);
-    console.log('body', parsedBody);
-    console.log("body.data", parsedBody.data);
     var original_lang = parsedBody.data.translations[0].detectedSourceLanguage;
     var eng_translation = parsedBody.data.translations[0].translatedText;
-      res.send({
-        original_lang: original_lang,
-        eng_translation: eng_translation,
-        original_lang_text: req.body.original_lang_text
+    var translation = {
+      original_lang: original_lang,
+      eng_translation: eng_translation,
+      original_lang_text: req.body.original_lang_text
+    };
+    translationController.addTranslation(translation)
+      .then(function() {
+        res.send(translation);
       });
   });
 });
