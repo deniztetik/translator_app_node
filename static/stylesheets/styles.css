@@ -6,6 +6,27 @@
   text-align: center;
 }
 
+button{
+  /* change these properties to whatever you want */
+  height: 30px;
+  width: 100px;
+  border: none;
+  background-color: ghostwhite;
+  color: dimgray;
+  border-radius: 10px;
+}
+
+input[type=text] {
+  font-size: 90%;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 nav {
   margin: 0;
 }
